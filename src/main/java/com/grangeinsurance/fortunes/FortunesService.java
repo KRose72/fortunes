@@ -1,5 +1,7 @@
 package com.grangeinsurance.fortunes;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,9 @@ public class FortunesService {
 		System.out.println(fortuneList.getFortunes());
 		return works;
 	}
+
+	public Map<Integer, String> fortunes() {
+		return fortuneList.getFortunes();
+	}
+
 }
