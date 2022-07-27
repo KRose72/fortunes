@@ -2,7 +2,7 @@ package com.grangeinsurance.fortunes;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random; 
+import java.util.Random;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -41,7 +41,6 @@ public class FortunesList {
 		Integer max = fortunes.size();
 		Random random = new Random();
 		
-		//id = (int)(Math.random()*(max-min+1)+min);
 		id = random.nextInt(max) + 1;
 		
 		result.put(id, fortunes.get(id));

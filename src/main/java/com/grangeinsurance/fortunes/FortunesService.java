@@ -17,7 +17,7 @@ public class FortunesService {
 	private String works;
 	
 	public String testMethod() {
-		System.out.println(fortuneList.getFortunes());
+		//System.out.println(fortuneList.getFortunes());
 		return works;
 	}
 
