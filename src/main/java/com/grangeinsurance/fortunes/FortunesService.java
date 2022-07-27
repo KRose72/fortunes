@@ -1,5 +1,6 @@
 package com.grangeinsurance.fortunes;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +23,12 @@ public class FortunesService {
 
 	public Map<Integer, String> fortunes() {
 		return fortuneList.getFortunes();
+	}
+
+	public Map<Integer, String> getFortune(int id) {
+		Map<Integer, String> result = new HashMap<>();
+		result.put(id, fortuneList.getFortuneByID(id));
+		return result;
 	}
 
 }

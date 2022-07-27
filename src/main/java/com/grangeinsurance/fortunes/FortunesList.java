@@ -16,6 +16,18 @@ public class FortunesList {
 	public Map<Integer, String> getFortunes() {
 		return fortunes;
 	}
+	
+	public String getFortuneByID(Integer id) {
+		if (id > 0 && id <= fortunes.size()) {
+			return fortunes.get(id);
+		} else {
+			return "Please enter a valid ID value.";
+		}
+	}
+	
+	public Integer getFortuneListSize() {
+		return fortunes.size();
+	}
 
 	public void setFortunes(Map<Integer, String> fortunes) {
 		this.fortunes = fortunes;

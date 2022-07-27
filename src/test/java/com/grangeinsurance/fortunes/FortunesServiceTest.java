@@ -27,7 +27,7 @@ class FortunesServiceTest {
 	@Test
 	void serviceReturnsFullListOfFortunes() {
 		
-		final Map<Integer, String> expected = new HashMap<Integer, String>() {
+		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
 
 			/**
 			 * 
@@ -80,6 +80,72 @@ class FortunesServiceTest {
 	    
 	    when(mockService.getFortunes()).thenReturn(expected);
 	    Map<Integer, String> response = subject.fortunes();
+	    assertThat(response).isEqualTo(expected);
+	}
+	
+	@Test
+	void serviceReturnsKeyValuePairWhenAKeyIsRecieved() {
+		
+		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -7472342844707953360L;
+
+			{
+	    
+	    		put(14, "Perhaps you’ve been focusing too much on saving.");
+	    		
+	    	}
+	    };
+	    
+	    when(mockService.getFortuneByID(14)).thenReturn("Perhaps you’ve been focusing too much on saving.");
+	    Map<Integer, String> response = subject.getFortune(14);
+	    assertThat(response).isEqualTo(expected);
+	}
+	
+	@Test
+	void serviceReturnsPromptMessageWhenKeyFortyTwoIsOutOfBounds() {
+		
+		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -7472342844707953360L;
+
+			{
+	    
+	    		put(42, "Please enter a valid ID value.");
+	    		
+	    	}
+	    };
+	    
+	    when(mockService.getFortuneByID(42)).thenReturn("Please enter a valid ID value.");
+	    Map<Integer, String> response = subject.getFortune(42);
+	    assertThat(response).isEqualTo(expected);
+	}
+	
+	@Test
+	void serviceReturnsPromptMessageWhenKeyZeroIsOutOfBounds() {
+		
+		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -7472342844707953360L;
+
+			{
+	    
+	    		put(0, "Please enter a valid ID value.");
+	    		
+	    	}
+	    };
+	    
+	    when(mockService.getFortuneByID(0)).thenReturn("Please enter a valid ID value.");
+	    Map<Integer, String> response = subject.getFortune(0);
 	    assertThat(response).isEqualTo(expected);
 	}
 }
