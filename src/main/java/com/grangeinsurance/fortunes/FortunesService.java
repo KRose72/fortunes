@@ -31,4 +31,8 @@ public class FortunesService {
 		return result;
 	}
 
+	public Map<Integer, String> getRandomFortune() {
+		return fortuneList.getRandomFortune();
+	}
+
 }
