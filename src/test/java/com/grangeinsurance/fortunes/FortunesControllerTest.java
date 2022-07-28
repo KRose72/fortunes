@@ -89,7 +89,7 @@ class FortunesControllerTest {
 	}
 	
 	@Test
-	void serviceReturnsKeyValuePairWhenAKeyIsRecieved() {
+	void controllerReturnsKeyValuePairWhenAKeyIsRecieved() {
 		
 		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
 
@@ -111,7 +111,7 @@ class FortunesControllerTest {
 	}
 	
 	@Test
-	void serviceReturnsPromptMessageWhenKeyFortyTwoIsOutOfBounds() {
+	void controllerReturnsPromptMessageWhenKeyFortyTwoIsOutOfBounds() {
 		
 		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
 
@@ -133,7 +133,7 @@ class FortunesControllerTest {
 	}
 	
 	@Test
-	void serviceReturnsPromptMessageWhenKeyZeroIsOutOfBounds() {
+	void controllerReturnsPromptMessageWhenKeyZeroIsOutOfBounds() {
 		
 		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
 
@@ -155,24 +155,12 @@ class FortunesControllerTest {
 	}
 	
 	@Test
-	void serviceReturnsRandomFortune() {
+	void controllerReturnsRandomFortune() {
 		
-		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = -7472342844707953360L;
-
-			{
-	    
-	    		put(14, "Perhaps you’ve been focusing too much on saving.");
-	    		
-	    	}
-	    };
+		final HashMap<Integer, String> expected = new HashMap<Integer, String>(); 
 	    
 	    when(mockService.getRandomFortune()).thenReturn(expected);
 	    Map<Integer, String> response = subject.getRandomFortune();
-	    assertThat(response).isEqualTo(expected);
+	    assertThat(response.getClass().getSimpleName()).isEqualTo(expected.getClass().getSimpleName());
 	}
 }

@@ -152,22 +152,10 @@ class FortunesServiceTest {
 	@Test
 	void serviceReturnsRandomFortune() {
 		
-		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = -7472342844707953360L;
-
-			{
-	    
-	    		put(0, "Please enter a valid ID value.");
-	    		
-	    	}
-	    };
+		final HashMap<Integer, String> expected = new HashMap<Integer, String>(); 
 	    
 	    when(mockService.getRandomFortune()).thenReturn(expected);
 	    Map<Integer, String> response = subject.getRandomFortune();
-	    assertThat(response).isEqualTo(expected);
+	    assertThat(response.getClass().getSimpleName()).isEqualTo(expected.getClass().getSimpleName());
 	}
 }

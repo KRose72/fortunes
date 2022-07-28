@@ -3,7 +3,6 @@ package com.grangeinsurance.fortunes;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,8 +12,8 @@ public class FortunesService {
 	
 	public FortunesService(FortunesList fortuneList) { this.fortuneList = fortuneList;	}
 	
-	@Value("${works}")
-	private String works;
+	//@Value("${works}")
+	private String works = "true";
 	
 	public String testMethod() {
 		//System.out.println(fortuneList.getFortunes());
