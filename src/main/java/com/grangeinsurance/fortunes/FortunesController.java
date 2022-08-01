@@ -13,11 +13,6 @@ public class FortunesController {
 	
 	public FortunesController(FortunesService service) { this.service= service;	}
 	
-	@GetMapping("/test")
-	public String testMethod() {
-		return service.testMethod();
-	}
-	
 	@GetMapping("/fortunes")
 	public Map<Integer, String> fortunes() {
 		return service.fortunes();

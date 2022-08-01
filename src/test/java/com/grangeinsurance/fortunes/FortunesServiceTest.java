@@ -101,6 +101,7 @@ class FortunesServiceTest {
 	    };
 	    
 	    when(mockService.getFortuneByID(14)).thenReturn("Perhaps you’ve been focusing too much on saving.");
+	    when(mockService.getFortuneListSize()).thenReturn(40);
 	    Map<Integer, String> response = subject.getFortune(14);
 	    assertThat(response).isEqualTo(expected);
 	}
@@ -122,7 +123,7 @@ class FortunesServiceTest {
 	    	}
 	    };
 	    
-	    when(mockService.getFortuneByID(42)).thenReturn("Please enter a valid ID value.");
+	    when(mockService.getFortuneListSize()).thenReturn(40);
 	    Map<Integer, String> response = subject.getFortune(42);
 	    assertThat(response).isEqualTo(expected);
 	}
@@ -144,7 +145,7 @@ class FortunesServiceTest {
 	    	}
 	    };
 	    
-	    when(mockService.getFortuneByID(0)).thenReturn("Please enter a valid ID value.");
+	    when(mockService.getFortuneListSize()).thenReturn(40);
 	    Map<Integer, String> response = subject.getFortune(0);
 	    assertThat(response).isEqualTo(expected);
 	}
@@ -154,7 +155,7 @@ class FortunesServiceTest {
 		
 		final HashMap<Integer, String> expected = new HashMap<Integer, String>(); 
 	    
-	    when(mockService.getRandomFortune()).thenReturn(expected);
+		when(mockService.getFortuneListSize()).thenReturn(40);
 	    Map<Integer, String> response = subject.getRandomFortune();
 	    assertThat(response.getClass().getSimpleName()).isEqualTo(expected.getClass().getSimpleName());
 	}
