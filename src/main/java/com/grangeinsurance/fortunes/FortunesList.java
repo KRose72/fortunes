@@ -12,6 +12,14 @@ import org.springframework.stereotype.Component;
 public class FortunesList {
 	
 	private Map<Integer, String> fortunes;
+	
+	public FortunesList () {
+		//Default Constructor
+	}
+	
+	public FortunesList(Map<Integer, String> fortunes) {
+		this.fortunes = fortunes;
+	}
 
 	public Map<Integer, String> getFortunes() {
 		return fortunes;

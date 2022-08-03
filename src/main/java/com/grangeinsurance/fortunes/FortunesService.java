@@ -1,5 +1,7 @@
 package com.grangeinsurance.fortunes;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -10,8 +12,12 @@ import org.springframework.stereotype.Service;
 public class FortunesService {
 	
 	private FortunesList fortuneList;
+	private Random random;
 	
-	public FortunesService(FortunesList fortuneList) { this.fortuneList = fortuneList;	}
+	public FortunesService(FortunesList fortuneList) throws NoSuchAlgorithmException { 
+		this.fortuneList = fortuneList;	
+		random = SecureRandom.getInstanceStrong();
+	}
 
 	public Map<Integer, String> fortunes() {
 		return fortuneList.getFortunes();
@@ -34,9 +40,10 @@ public class FortunesService {
 		Map<Integer, String> result = new HashMap<>();
 		Integer id;
 		Integer max = fortuneList.getFortuneListSize();
-		Random random = new Random();
 		
+		random.setSeed(58);
 		id = random.nextInt(max) + 1;
+		
 		result.put(id, fortuneList.getFortuneByID(id));
 		
 		return result;
