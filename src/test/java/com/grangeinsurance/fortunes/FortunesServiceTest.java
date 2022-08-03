@@ -1,6 +1,7 @@
 package com.grangeinsurance.fortunes;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import java.security.NoSuchAlgorithmException;
@@ -110,45 +111,27 @@ class FortunesServiceTest {
 	@Test
 	void serviceReturnsPromptMessageWhenKeyFortyTwoIsOutOfBounds() {
 		
-		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = -7472342844707953360L;
-
-			{
-	    
-	    		put(42, "Please enter a valid ID value.");
-	    		
-	    	}
-	    };
-	    
-	    when(mockService.getFortuneListSize()).thenReturn(40);
-	    Map<Integer, String> response = subject.getFortune(42);
-	    assertThat(response).isEqualTo(expected);
+		FortuneNotFoundException exception = assertThrows(FortuneNotFoundException.class, () -> {
+			subject.getFortune(42);
+		});
+		
+		String expected = "Fortune not found for the ID: 42";
+		String response = exception.getMessage();
+		
+		assertThat(response).isEqualTo(expected);
 	}
 	
 	@Test
 	void serviceReturnsPromptMessageWhenKeyZeroIsOutOfBounds() {
 		
-		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = -7472342844707953360L;
-
-			{
-	    
-	    		put(0, "Please enter a valid ID value.");
-	    		
-	    	}
-	    };
-	    
-	    when(mockService.getFortuneListSize()).thenReturn(40);
-	    Map<Integer, String> response = subject.getFortune(0);
-	    assertThat(response).isEqualTo(expected);
+		FortuneNotFoundException exception = assertThrows(FortuneNotFoundException.class, () -> {
+			subject.getFortune(0);
+		});
+		
+		String expected = "Fortune not found for the ID: 0";
+		String response = exception.getMessage();
+		
+		assertThat(response).isEqualTo(expected);
 	}
 	
 	@Test

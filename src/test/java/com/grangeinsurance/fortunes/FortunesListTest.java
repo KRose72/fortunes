@@ -128,4 +128,19 @@ class FortunesListTest {
 	void returnFortyWhenCheckingMapSize() {
 		assertThat(subject.getFortuneListSize()).isEqualTo(40);
 	}
+	
+	@Test
+	void returnFortuneWhenGivenIDThirteen() {
+		assertThat(subject.getFortuneByID(13)).isEqualTo("Now is a good time to buy stock.");
+	}
+	
+	@Test
+	void returnFortuneWhenGivenIDZero() {
+		assertThat(subject.getFortuneByID(0)).isNull();
+	}
+	
+	@Test
+	void returnFortuneWhenGivenIDSixtyTwo() {
+		assertThat(subject.getFortuneByID(62)).isNull();
+	}
 }
