@@ -30,15 +30,6 @@ public class FortunesService {
 		if (id < 1 || id > max) throw new FortuneNotFoundException("Fortune not found for the ID: " + id);
 		result.put(id, fortuneList.getFortuneByID(id));
 		return result;
-		
-//		if (id > 0 && id <= max) {
-//			result.put(id, fortuneList.getFortuneByID(id));
-//			return result;
-//		} else {
-//			result.put(id, "Please enter a valid ID value.");
-//			return result;
-//		}
-	
 	}
 
 	public Map<Integer, String> getRandomFortune() {
