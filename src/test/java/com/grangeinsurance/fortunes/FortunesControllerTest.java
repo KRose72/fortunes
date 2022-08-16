@@ -113,19 +113,7 @@ class FortunesControllerTest {
 	@Test
 	void controllerReturnsPromptMessageWhenKeyFortyTwoIsOutOfBounds() {
 		
-		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = -7472342844707953360L;
-
-			{
-	    
-	    		put(42, "Please enter a valid ID value.");
-	    		
-	    	}
-	    };
+		final HashMap<Integer, String> expected = new HashMap<Integer, String>();
 	    
 	    when(mockService.getFortune(42)).thenReturn(expected);
 	    Map<Integer, String> response = subject.getFortune(42);
@@ -135,19 +123,7 @@ class FortunesControllerTest {
 	@Test
 	void controllerReturnsPromptMessageWhenKeyZeroIsOutOfBounds() {
 		
-		final HashMap<Integer, String> expected = new HashMap<Integer, String>() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = -7472342844707953360L;
-
-			{
-	    
-	    		put(0, "Please enter a valid ID value.");
-	    		
-	    	}
-	    };
+		final HashMap<Integer, String> expected = new HashMap<Integer, String>();
 	    
 	    when(mockService.getFortune(0)).thenReturn(expected);
 	    Map<Integer, String> response = subject.getFortune(0);

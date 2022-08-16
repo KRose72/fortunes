@@ -29,6 +29,7 @@ public class FortunesController {
 
 	@GetMapping("/fortunes/random")
 	public Map<Integer, String> getRandomFortune() {
+		
 		return service.getRandomFortune();
 	}
 	
