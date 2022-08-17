@@ -141,6 +141,7 @@ class FortunesServiceTest {
 	    
 		when(mockService.getFortuneListSize()).thenReturn(40);
 	    Map<Integer, String> response = subject.getRandomFortune();
+	    assertThat(response).isNotEqualTo(expected);
 	    assertThat(response.getClass().getSimpleName()).isEqualTo(expected.getClass().getSimpleName());
 	}
 }
